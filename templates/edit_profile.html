@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Edit Profile</h1>
+    </header>
+
+    <div class="profile-page">
+        <h2>Update Your Information</h2>
+
+        <form method="POST" action="{{ url_for('edit_profile') }}">
+            <div class="profile-card">
+                <h3>Personal Information</h3>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="{{ user_data['username'] }}" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ user_data['email'] }}" required>
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" value="{{ user_data['phone_number'] }}" required>
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" value="{{ user_data['dob'] }}" required>
+            </div>
+
+            <div class="profile-card">
+                <h3>Financial Details</h3>
+                <label for="income">Income:</label>
+                <input type="number" id="income" name="income" value="{{ user_data['income'] }}" required>
+                <label for="property_value">Property Value:</label>
+                <input type="number" id="property_value" name="property_value" value="{{ user_data['property_value'] }}" required>
+                <label for="property_type">Property Type:</label>
+                <input type="text" id="property_type" name="property_type" value="{{ user_data['property_type'] }}" required>
+            </div>
+
+            <div class="profile-card">
+                <h3>Vehicle Information</h3>
+                <label for="vehicle_type">Vehicle Type:</label>
+                <input type="text" id="vehicle_type" name="vehicle_type" value="{{ user_data['vehicle_details']['type'] }}" required>
+                <label for="engine_capacity">Engine Capacity:</label>
+                <input type="number" id="engine_capacity" name="engine_capacity" value="{{ user_data['vehicle_details']['engine_capacity'] }}" required>
+                <label for="vehicle_age">Vehicle Age:</label>
+                <input type="number" id="vehicle_age" name="vehicle_age" value="{{ user_data['vehicle_details']['age'] }}" required>
+            </div>
+
+            <div class="profile-actions">
+                <button type="submit" class="btn-save">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

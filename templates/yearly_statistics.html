@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yearly Statistics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Yearly Statistics</h2>
+    
+    <!-- Year selection form -->
+    <form method="POST" action="{{ url_for('yearly_statistics') }}">
+        <label for="year">Select Year:</label>
+        <!-- Set default value to current year if not provided -->
+        <input type="number" id="year" name="year" value="{{ statistics['year'] or datetime.now().year }}">
+        <button type="submit">Get Statistics</button>
+    </form>
+
+    <!-- Displaying the statistics -->
+    <div>
+        <h3>Statistics for Year: {{ statistics['year'] }}</h3>
+        <p>Total Income for the Year: ${{ statistics['total_income'] | round(2) }}</p>
+        <p>Average Income for the Year: ${{ statistics['average_income'] | round(2) }}</p>
+        <p>Total Reports for the Year: {{ statistics['total_reports'] }}</p>
+    </div>
+    
+    <!-- Displaying the Detailed Reports -->
+    <h3>Reports for the Year:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Income</th>
+                <th>Vehicle Type</th>
+                <th>Engine Capacity</th>
+                <th>Property Value</th>
+                <th>Report Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for report in statistics['user_reports'] %}
+                <tr>
+                    <td>{{ report['username'] }}</td>
+                    <td>{{ report['income'] }}</td>
+                    <td>{{ report['vehicle_type'] }}</td>
+                    <td>{{ report['engine_capacity'] }}</td>
+                    <td>{{ report['property_value'] }}</td>
+                    <td>{{ report['report_date'] }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">No reports available for this year.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

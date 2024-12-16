@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Report</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="tax-report-container">
+        <header>
+            <h1>Tax Report for {{ username }}</h1>
+        </header>
+
+        <div class="tax-cards">
+            <!-- Income Tax Card -->
+            <div class="tax-card income-tax">
+                <div class="card-header">
+                    <i class="fa fa-money-bill-wave"></i>
+                    <h3>Income Tax</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>₹{{ income_tax }}</strong></p>
+                </div>
+            </div>
+
+            <!-- Vehicle Tax Card -->
+            <div class="tax-card vehicle-tax">
+                <div class="card-header">
+                    <i class="fa fa-car"></i>
+                    <h3>Vehicle Tax</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>₹{{ vehicle_tax }}</strong></p>
+                </div>
+            </div>
+
+            <!-- Property Tax Card -->
+            <div class="tax-card property-tax">
+                <div class="card-header">
+                    <i class="fa fa-home"></i>
+                    <h3>Property Tax</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>₹{{ property_tax }}</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="total-tax">
+            <h2>Total Tax Due</h2>
+            <p><strong>₹{{ total_tax }}</strong></p>
+            <!-- Download Button -->
+            <button class="download-btn">
+                <a href="{{ url_for('download_pdf') }}">Download Report</a>
+            </button>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

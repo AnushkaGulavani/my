@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>User Profile</h1>
+    </header>
+
+    <div class="profile-page">
+        <h2>Profile Information</h2>
+
+        <!-- Profile Details -->
+        <div class="profile-details">
+            <div class="profile-card">
+                <h3>Personal Information</h3>
+                <p><strong>Username:</strong> {{ user_data['username'] }}</p>
+                <p><strong>Email:</strong> {{ user_data['email'] }}</p>
+                <p><strong>Phone Number:</strong> {{ user_data['phone_number'] }}</p>
+                <p><strong>Date of Birth:</strong> {{ user_data['dob'] }}</p>
+            </div>
+
+            <div class="profile-card">
+                <h3>Financial Details</h3>
+                <p><strong>Income:</strong> ₹{{ user_data['income'] }}</p>
+                <p><strong>Property Value:</strong> ₹{{ user_data['property_value'] }}</p>
+                <p><strong>Property Type:</strong> {{ user_data['property_type'] }}</p>
+            </div>
+
+            <div class="profile-card">
+                <h3>Vehicle Information</h3>
+                <p><strong>Vehicle Type:</strong> {{ user_data['vehicle_details']['type'] }}</p>
+                <p><strong>Engine Capacity:</strong> {{ user_data['vehicle_details']['engine_capacity'] }} CC</p>
+                <p><strong>Vehicle Age:</strong> {{ user_data['vehicle_details']['age'] }} years</p>
+            </div>
+        </div>
+
+        <!-- Edit Profile Button -->
+        <div class="profile-actions">
+           
+            <a href="{{ url_for('edit_profile') }}" class="btn-edit">Edit Profile</a>
+
+        </div>
+    </div>
+</body>
+</html>
+

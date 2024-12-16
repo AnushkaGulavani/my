@@ -1,0 +1,61 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-page">
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-content">
+                <h1>Welcome to Your Dashboard</h1>
+                <p>Manage your profile, calculate taxes, and view your tax reports</p>
+            </div>
+        </header>
+
+        <!-- User Profile Section -->
+        <div class="user-profile">
+            <h2>Your Profile</h2>
+            <div class="profile-details">
+                <p><strong>Username:</strong> {{ session['username'] }}</p>
+                <p><strong>Email:</strong> {{ user_data['email'] }}</p>
+                <p><strong>Phone Number:</strong> {{ user_data['phone_number'] }}</p>
+                <p><strong>Date of Birth:</strong> {{ user_data['dob'] }}</p>
+            </div>
+        </div>
+
+        <!-- Actions Section -->
+        <div class="actions">
+            <a href="{{ url_for('profile') }}">
+                <button class="action-btn">View Profile</button>
+            </a>
+            <a href="{{ url_for('tax_calculation') }}">
+                <button class="action-btn">Calculate Tax</button>
+            </a>
+            <a href="{{ url_for('tax_report') }}">
+                <button class="action-btn">View Tax Report</button>
+            </a>
+              
+            </a>
+        </div>
+
+        <!-- Educational Resources Section -->
+        <div class="educational-resources">
+            <h2>Educational Resources</h2>
+            <p>Learn more about tax systems and financial management:</p>
+            <a href="https://en.m.wikipedia.org/wiki/Income_tax_in_India" target="_blank">
+                <button class="action-btn">Click here to Visit Income Tax India</button>
+            </a> 
+            <a href="https://en.m.wikipedia.org/wiki/Vehicle_Excise_Duty" target="_blank">
+                <button class="action-btn">Click here to visit  Vehicle tax</button>
+            </a>
+            <a href="https://simple.m.wikipedia.org/wiki/Property_tax" target="_blank">
+                <button class="action-btn">Click here to visit property tax</button>
+            </a>
+        </div>
+    </div> <!-- End dashboard-container -->
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tax Calculation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="tax-calculation-container">
+        <h2>Tax Calculation</h2>
+        
+        <form action="{{ url_for('tax_calculation') }}" method="POST">
+            <!-- Income -->
+            <div class="form-group">
+                <label for="income">Income</label>
+                <input type="number" id="income" name="income" placeholder="Income" required>
+            </div>
+
+            <!-- Vehicle Type -->
+            <div class="form-group">
+                <label for="vehicle_type">Vehicle Type</label>
+                <input type="text" id="vehicle_type" name="vehicle_type" placeholder="Vehicle Type (Car/Motorbike)" required>
+            </div>
+
+            <!-- Engine Capacity -->
+            <div class="form-group">
+                <label for="engine_capacity">Engine Capacity (in CC)</label>
+                <input type="number" id="engine_capacity" name="engine_capacity" placeholder="Engine Capacity (in CC)" required>
+            </div>
+
+            <!-- Vehicle Age -->
+            <div class="form-group">
+                <label for="vehicle_age">Vehicle Age (in years)</label>
+                <input type="number" id="vehicle_age" name="vehicle_age" placeholder="Vehicle Age (in years)" required>
+            </div>
+
+            <!-- Property Value -->
+            <div class="form-group">
+                <label for="property_value">Property Value</label>
+                <input type="number" id="property_value" name="property_value" placeholder="Property Value" required>
+            </div>
+
+            <!-- Property Type -->
+            <div class="form-group">
+                <label for="property_type">Property Type</label>
+                <select id="property_type" name="property_type">
+                    <option value="residential">Residential</option>
+                    <option value="commercial">Commercial</option>
+                </select>
+            </div>
+
+            <!-- Year Option -->
+            <div class="form-group">
+                <label for="year">Tax Year</label>
+                <select id="year" name="year">
+                    {% for year in range(2020, 2031) %}
+                    <option value="{{ year }}">{{ year }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Calculate Tax</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+

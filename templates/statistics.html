@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="statistics-container">
+        <h1>Tax Statistics</h1>
+
+        <!-- Display Summary Statistics -->
+        <div class="summary-stats">
+            <div>
+                <h3>Total Income Tax</h3>
+                <p>₹{{ statistics['total_income_tax'] | round(2) }}</p>
+            </div>
+            <div>
+                <h3>Total Vehicle Tax</h3>
+                <p>₹{{ statistics['total_vehicle_tax'] | round(2) }}</p>
+            </div>
+            <div>
+                <h3>Total Property Tax</h3>
+                <p>₹{{ statistics['total_property_tax'] | round(2) }}</p>
+            </div>
+        </div>
+
+        <!-- Display Current and Previous Year Taxes -->
+        <div class="yearly-tax-stats">
+            <div>
+                <h3>Current Year Tax ({{ current_year }})</h3>
+                <p>₹{{ statistics['current_year_tax'] | round(2) }}</p>
+            </div>
+            <div>
+                <h3>Previous Year Tax ({{ previous_year }})</h3>
+                <p>₹{{ statistics['previous_year_tax'] | round(2) }}</p>
+            </div>
+        </div>
+
+        <!-- Display Graph for Total Tax by Year -->
+        <h2>Total Tax by Year</h2>
+        <canvas id="taxChart" width="400" height="200"></canvas>
+
+        <!-- Button to Go Back -->
+        <a href="{{ url_for('dashboard') }}">
+            <button>Back to Dashboard</button>
+        </a>
+    </div>
+    <div class="summary-stats">
+        <div>
+            <h3>Current Year Tax</h3>
+            <p>₹{{ statistics['current_year_tax'] | round(2) }}</p>
+        </div>
+        <div>
+            <h3>Previous Year Tax</h3>
+            <p>₹{{ statistics['previous_year_tax'] | round(2) }}</p>
+        </div>
+    </div>

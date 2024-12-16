@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Tax Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="index-page"> <!-- Add the class index-page to body -->
+    <!-- Header Section -->
+    <header>
+        <div class="background-overlay"></div> <!-- Optional dark overlay -->
+        <div class="header-content">
+            <div class="welcome-box">
+                <h1>Welcome to Your Tax Management Dashboard</h1>
+                <p>Manage your taxes, calculate dues, and get reports all in one place.</p>
+            </div>
+            <div class="buttons-box">
+                <a href="{{ url_for('register') }}" class="btn-register">Register</a>
+                <a href="{{ url_for('login') }}" class="btn-login">Login</a>
+            </div>
+        </div>
+    </header>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
